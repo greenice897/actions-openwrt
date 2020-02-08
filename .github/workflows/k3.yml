@@ -22,13 +22,13 @@ on:
 #    types: [started]
 
 env:
-  REPO_URL: https://github.com/openwrt/openwrt.git
+  REPO_URL: https://github.com/openwrt/openwrt
   REPO_BRANCH: openwrt-19.07
-  OWN_PACKAGE_URL: https://github.com/greenice897/gipackages.git
+  OWN_PACKAGE_URL: https://github.com/greenice897/gipackages
   CONFIG_FILE: .config
 #  DIY_SH: diy.sh
   FREE_UP_DISK: false
-  SSH_ACTIONS: false
+#  SSH_ACTIONS: false
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   TZ: Asia/Shanghai
@@ -387,9 +387,9 @@ jobs:
         sed -i 's/^[ \t]*//g' ./.config
         make defconfig
 
-    - name: SSH connection to Actions
-      uses: greenice897/debugger-action@master
-      if: env.SSH_ACTIONS == 'true'
+#    - name: SSH connection to Actions
+#      uses: greenice897/debugger-action@master
+#     if: env.SSH_ACTIONS == 'true'
 
     - name: Download package
       id: package
