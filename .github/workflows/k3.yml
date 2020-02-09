@@ -48,7 +48,7 @@ jobs:
         sudo swapoff /swapfile
         sudo rm -rf /swapfile /etc/apt/sources.list.d/*
         sudo -E apt-get -qq update
-        sudo -E apt-get -qq install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler
+        sudo -E apt-get -qq install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler sed
         curl -fsSL https://raw.githubusercontent.com/P3TERX/dotfiles/master/.bashrc >> ~/.bashrc
     - name: Free up disk space
       if: env.FREE_UP_DISK == 'true'
@@ -61,11 +61,11 @@ jobs:
         sudo -E apt-get -qq autoremove --purge
         sudo -E apt-get -qq clean
     - name: Clone source code
-      run: git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
+      run: git clone $REPO_URL -b $REPO_BRANCH openwrt
 
     - name: Clone own packages
       run: |
-        git clone --depth 1 $OWN_PACKAGE_URL ./openwrt/package/greenice
+        git clone $OWN_PACKAGE_URL ./openwrt/package/greenice
         rm -rf ./openwrt/package/greenice/.git
 
     - name: Update feeds
@@ -73,6 +73,13 @@ jobs:
 
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
+
+    - name: Only k3 firmware
+      run: |
+        cd openwrt
+        cp ./target/linux/bcm53xx/image/Makefile Makefile.bak
+        sed -i '/TARGET_DEVICES +=/ s/^/# /g' ./target/linux/bcm53xx/image/Makefile
+        sed -i '/# TARGET_DEVICES += phicomm-k3/ s/# //' .target/linux/bcm53xx/image/Makefile
 
     - name: Load custom configuration
       run: |
