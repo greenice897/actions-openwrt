@@ -79,7 +79,7 @@ jobs:
         cd openwrt
         cp ./target/linux/bcm53xx/image/Makefile Makefile.bak
         sed -i '/TARGET_DEVICES +=/ s/^/# /g' ./target/linux/bcm53xx/image/Makefile
-        sed -i '/# TARGET_DEVICES += phicomm-k3/ s/# //' .target/linux/bcm53xx/image/Makefile
+        sed -i '/# TARGET_DEVICES += phicomm-k3/ s/# //' ./target/linux/bcm53xx/image/Makefile
 
     - name: Load custom configuration
       run: |
