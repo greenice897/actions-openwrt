@@ -32,6 +32,10 @@ env:
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   TZ: Asia/Shanghai
+  MOD_PATH: ./target/linux/bcm53xx/image
+  MOD_FILE: Makefile
+  KEYWORDS_FRONT: TARGET_DEVICES
+  KEYWORDS_BACK: TARGET_DEVICES += phicomm-k3
 
 jobs:
   build:
@@ -74,23 +78,25 @@ jobs:
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
 
-    - name: Only k3 firmware
+        #本模块设置只编译特定固件，只对部分有效
+    - name: Only special firmware
       run: |
         cd openwrt
-        cp ./target/linux/bcm53xx/image/Makefile Makefile.bak
-        sed -i '/TARGET_DEVICES +=/ s/^/# /g' ./target/linux/bcm53xx/image/Makefile
-        sed -i '/# TARGET_DEVICES += phicomm-k3/ s/# //' ./target/linux/bcm53xx/image/Makefile
+        cp $MOD_PATH/$MOD_FILE bak.$MOD_FILE
+        sed -i '/'"$KEYWORDS_FRONT"'/ s@^@# @g' $MOD_PATH/$MOD_FILE
+        sed -i '/# '"$KEYWORDS_BACK"'/ s@# @@' $MOD_PATH/$MOD_FILE
 
     - name: Load custom configuration
       run: |
         cd openwrt
         rm -f ./.config*
         touch ./.config
-        # 编译斐讯k3固件:
+        # 编译斐讯k3固件:（以下定制部分需根据不同路由进行修改）
         cat >> .config <<EOF
         CONFIG_TARGET_bcm53xx=y
         CONFIG_TARGET_bcm53xx_DEVICE_phicomm-k3=y
         CONFIG_TARGET_BOARD="bcm53xx"
+        CONFIG_KERNEL_DEVMEM=y
         CONFIG_LUCI_LANG_zh_Hans=y
         CONFIG_NGINX_HEADERS_MORE=y
         CONFIG_NGINX_HTTP_ACCESS=y
@@ -286,6 +292,7 @@ jobs:
         CONFIG_PACKAGE_luci-app-guest-wifi=y
         CONFIG_PACKAGE_luci-app-hd-idle=y
         CONFIG_PACKAGE_luci-app-ipsec-vpnd=y
+        CONFIG_PACKAGE_luci-app-k3screenctrl=y
         CONFIG_PACKAGE_luci-app-ksmbd=y
         CONFIG_PACKAGE_luci-app-mwan3=y
         CONFIG_PACKAGE_luci-app-nlbwmon=y
@@ -340,6 +347,7 @@ jobs:
         CONFIG_PACKAGE_openvpn-easy-rsa=y
         CONFIG_PACKAGE_openvpn-openssl=y
         CONFIG_PACKAGE_pdnsd-alt=y
+        CONFIG_PACKAGE_phicommk3-screenctrl=y
         CONFIG_PACKAGE_resolveip=y
         CONFIG_PACKAGE_rpcd=y
         CONFIG_PACKAGE_rpcd-mod-file=y
