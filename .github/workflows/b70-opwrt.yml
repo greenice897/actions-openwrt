@@ -26,7 +26,7 @@ env:
   REPO_BRANCH: master
   OWN_PACKAGE_URL: false
   CONFIG_FILE: b70.config
-  DIY_SH: false
+  #  DIY_SH: false
   FREE_UP_DISK: false
 #  SSH_ACTIONS: false
   UPLOAD_BIN_DIR: false
