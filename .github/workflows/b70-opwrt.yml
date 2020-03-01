@@ -24,7 +24,7 @@ on:
 env:
   REPO_URL: https://github.com/project-openwrt/openwrt
   REPO_BRANCH: master
-  OWN_PACKAGE_URL: false
+  #  OWN_PACKAGE_URL: false
   CONFIG_FILE: b70.config
   #  DIY_SH: false
   FREE_UP_DISK: false
