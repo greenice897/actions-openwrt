@@ -57,6 +57,7 @@ jobs:
         echo "alias l='ls -lFh'" >> ~/.bashrc
         echo "alias la='ls -lAFh'" >> ~/.bashrc
         echo "alias ll='ls -l'" >> ~/.bashrc
+        sudo apt-get install -y g++-multilib libreadline-dev libglib2.0-dev xmlto qemu-utils upx libelf-dev ccache curl wget vim nano python python3 python-pip python3-pip python-ply python3-ply haveged lrzsz device-tree-compiler scons
     - name: Free up disk space
       if: env.FREE_UP_DISK == 'true'
       env:
