@@ -11,9 +11,9 @@ name: Build OpenWrt
 on:
 #  release:
 #    types: [published]
-#  push:
-#    branches:
-#      - master
+  push:
+    branches:
+      - master
 #    paths:
 #      - '.config'
 #  schedule:
@@ -22,11 +22,11 @@ on:
 #    types: [started]
 
 env:
-  REPO_URL: https://github.com/project-openwrt/openwrt
+  REPO_URL: https://github.com/openwrt/openwrt
   REPO_BRANCH: master
-  #  OWN_PACKAGE_URL: false
-  CONFIG_FILE: b70.config
-  #  DIY_SH: false
+  OWN_PACKAGE_URL: https://github.com/greenice897/gipackages
+  CONFIG_FILE: b70-master.config
+  DIY_SH: diy-b70-master.sh
   FREE_UP_DISK: false
 #  SSH_ACTIONS: false
   UPLOAD_BIN_DIR: false
@@ -71,8 +71,8 @@ jobs:
     - name: Clone source code
       run: git clone $REPO_URL -b $REPO_BRANCH openwrt
 
-      #- name: Clone own packages
-      #run: git clone $OWN_PACKAGE_URL ./openwrt/package/greenice
+    - name: Clone own packages
+      run: git clone $OWN_PACKAGE_URL ./openwrt/package/greenice
 
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
@@ -92,13 +92,13 @@ jobs:
       run: |
         [ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
-        #        chmod +x $DIY_SH
+        chmod +x $DIY_SH
         cd openwrt
-        #../$DIY_SH
+        ../$DIY_SH
         make defconfig
 
 #    - name: SSH connection to Actions
-#      uses: greenice897/debugger-action@master
+#      uses: cpopwrt/debugger-action@master
 #     if: env.SSH_ACTIONS == 'true'
 
     - name: Download package
