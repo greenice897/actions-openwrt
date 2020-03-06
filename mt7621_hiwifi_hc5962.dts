@@ -79,40 +79,30 @@
 
 		partition@540000 {
 			label = "ubi";
-			reg = <0x540000 0x3c00000>;
+			reg = <0x540000 0x68c0000>;
 		};
 
-		partition@4140000 {
+		partition@6e00000 {
 			label = "hw_panic";
-			reg = <0x4140000 0x80000>;
+			reg = <0x6e00000 0x80000>;
 			read-only;
 		};
 
-		partition@41c0000 {
+		partition@6e80000 {
 			label = "bdinfo";
-			reg = <0x41c0000 0x80000>;
+			reg = <0x6e80000 0x80000>;
 			read-only;
 		};
 
-		partition@4240000 {
+		partition@6f00000 {
 			label = "backup";
-			reg = <0x4240000 0x80000>;
+			reg = <0x6f00000 0x80000>;
 			read-only;
 		};
 
-		partition@42c0000 {
+		partition@6f80000 {
 			label = "overly";
-			reg = <0x42c0000 0x1000000>;
-		};
-
-		partition@52c0000 {
-			label = "oem";
-			reg = <0x52c0000 0x200000>;
-		};
-
-		partition@54c0000 {
-			label = "opt";
-			reg = <0x54c0000 0x2ac0000>;
+			reg = <0x6f80000 0x1000000>;
 		};
 	};
 };
