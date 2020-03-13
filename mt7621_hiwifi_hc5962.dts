@@ -44,6 +44,21 @@
 			linux,code = <KEY_RESTART>;
 		};
 	};
+	ubi-concat {
+        compatible = "mtd-concat";
+        devices = <&ubipart0 &ubipart1>;
+
+        partitions {
+            compatible = "fixed-partitions";
+            #address-cells = <1>;
+            #size-cells = <1>;
+
+            ubi@540000 {
+                label = "ubi";
+                reg = <0x0 0x79c0000>;
+            };
+        };
+	};
 };
 
 &nand {
@@ -77,33 +92,22 @@
 			reg = <0x140000 0x400000>;
 		};
 
-		partition@540000 {
-			label = "ubi";
-			reg = <0x540000 0x68c0000>;
-		};
+		ubipart0: partition@540000 {
+            label = "ubipart0";
+            reg = <0x540000 0x1c80000>;
+        };
 
-		partition@6e00000 {
-			label = "hw_panic";
-			reg = <0x6e00000 0x80000>;
-			read-only;
-		};
+        partition@21c0000 {
+            label = "bdinfo";
+            reg = <0x21c0000 0x80000>;
+            read-only;
+        };
 
-		partition@6e80000 {
-			label = "bdinfo";
-			reg = <0x6e80000 0x80000>;
-			read-only;
-		};
-
-		partition@6f00000 {
-			label = "backup";
-			reg = <0x6f00000 0x80000>;
-			read-only;
-		};
-
-		partition@6f80000 {
-			label = "overly";
-			reg = <0x6f80000 0x1000000>;
-		};
+        ubipart1: partition@2240000 {
+            label = "ubipart1";
+            reg = <0x2240000 0x5d40000>;
+        };
+		
 	};
 };
 
