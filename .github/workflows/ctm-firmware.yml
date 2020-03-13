@@ -11,9 +11,9 @@ name: Build OpenWrt
 on:
 #  release:
 #    types: [published]
-#  push:
-#    branches:
-#      - master
+  push:
+    branches:
+      - master
 #    paths:
 #      - '.config'
 #  schedule:
@@ -23,10 +23,10 @@ on:
 
 env:
   REPO_URL: https://github.com/openwrt/openwrt
-  REPO_BRANCH: openwrt-19.07
+  REPO_BRANCH: master
   OWN_PACKAGE_URL: https://github.com/greenice897/gipackages
-  CONFIG_FILE: k3.config
-  DIY_SH: diy.sh
+  CONFIG_FILE: k3-master.config
+  DIY_SH: diy-k3.sh
   FREE_UP_DISK: false
 #  SSH_ACTIONS: false
   UPLOAD_BIN_DIR: false
@@ -57,6 +57,7 @@ jobs:
         echo "alias l='ls -lFh'" >> ~/.bashrc
         echo "alias la='ls -lAFh'" >> ~/.bashrc
         echo "alias ll='ls -l'" >> ~/.bashrc
+        sudo apt-get install -y g++-multilib libreadline-dev libglib2.0-dev xmlto qemu-utils upx libelf-dev ccache curl wget vim nano python python3 python-pip python3-pip python-ply python3-ply haveged lrzsz device-tree-compiler scons
     - name: Free up disk space
       if: env.FREE_UP_DISK == 'true'
       env:
