@@ -25,17 +25,15 @@ env:
   REPO_URL: https://github.com/openwrt/openwrt
   REPO_BRANCH: master
   OWN_PACKAGE_URL: https://github.com/greenice897/gipackages
-  CONFIG_FILE: k3-master.config
-  DIY_SH: diy-k3.sh
+  CONFIG_FILE: x86.config
+  DIY_SH: diy-x86.sh
   FREE_UP_DISK: false
 #  SSH_ACTIONS: false
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   TZ: Asia/Shanghai
-  MOD_PATH: ./target/linux/bcm53xx/image
-  MOD_FILE: Makefile
-  KEYWORDS_FRONT: TARGET_DEVICES
-  KEYWORDS_BACK: TARGET_DEVICES += phicomm-k3
+  KERNEL_CONFIG: x86.config-5.4
+  CONFIG_64: x64.config-5.4
 
 jobs:
   build:
@@ -80,25 +78,19 @@ jobs:
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
 
-        #本模块设置仅编译特定固件，只对部分target有效
-    - name: Only special firmware
-      run: |
-        cd openwrt
-        cp $MOD_PATH/$MOD_FILE bak.$MOD_FILE
-        sed -i '/'"$KEYWORDS_FRONT"'/ s@^@# @g' $MOD_PATH/$MOD_FILE
-        sed -i '/# '"$KEYWORDS_BACK"'/ s@# @@' $MOD_PATH/$MOD_FILE
-
     - name: Load custom configuration
       run: |
         [ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
+        [ -e $KERNEL_CONFIG ] && mv $KERNEL_CONFIG openwrt/target/linux/x86/config-5.4
+        [ -e $CONFIG_64 ] && mv $CONFIG_64 openwrt/target/linux/x86/64/config-5.4
         chmod +x $DIY_SH
         cd openwrt
         ../$DIY_SH
         make defconfig
 
 #    - name: SSH connection to Actions
-#      uses: greenice897/debugger-action@master
+#      uses: cpopwrt/debugger-action@master
 #     if: env.SSH_ACTIONS == 'true'
 
     - name: Download package
