@@ -14,7 +14,7 @@ sed -i "s/timezone='UTC'/timezone='CTS-8'/g" package/base-files/files/bin/config
 
 ##修改root密码
 sed -i 's/root::0:0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/g' package/base-files/files/etc/shadow
-sed -i "/^DISTRIB_REVISION=/cDISTRIB_REVISION='V$YEAR.$MONTH.$DAY By Greenice'" openwrt/package/base-files/files/etc/openwrt_release
+sed -i "/^DISTRIB_REVISION=/cDISTRIB_REVISION='V$YEAR.$MONTH.$DAY By Greenice'" package/base-files/files/etc/openwrt_release
 # sed -i '/REDIRECT --to-ports 53/d' package/network/config/firewall/files/firewall.user
 # echo "iptables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 53" >> package/network/config/firewall/files/firewall.user
 # echo "iptables -t nat -A PREROUTING -p tcp --dport 53 -j REDIRECT --to-ports 53" >> package/network/config/firewall/files/firewall.user
