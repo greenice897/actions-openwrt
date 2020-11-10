@@ -29,7 +29,7 @@ env:
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
   OWN_PACKAGE_URL: https://github.com/greenice897/gipackages
-  CONFIG_FILE: seed.config.1006
+  CONFIG_FILE: seed.config.20201110
   KERNEL_CONFIG: x86.config-5.4
   CONFIG_64: x64.config-5.4
   DIY_P1_SH: diy-part1.sh
