@@ -20,5 +20,5 @@ sed -i "/^DISTRIB_REVISION=/cDISTRIB_REVISION='V$YEAR.$MONTH.$DAY By Greenice'" 
 # echo "iptables -t nat -A PREROUTING -p tcp --dport 53 -j REDIRECT --to-ports 53" >> package/network/config/firewall/files/firewall.user
 
 ##golang源改为lean修复官方源码下v2ray 4.30.0编译错误
-rm -rf feeds/packages/lang/golang
-svn co https://github.com/coolsnowwolf/packages/trunk/lang/golang feeds/packages/lang/golang
+# rm -rf feeds/packages/lang/golang
+# svn co https://github.com/coolsnowwolf/packages/trunk/lang/golang feeds/packages/lang/golang
