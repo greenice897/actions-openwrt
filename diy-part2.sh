@@ -6,7 +6,7 @@ DAY=$(date +%-d)
 
 mv ./package/greenice/ucl ./tools/
 mv ./package/greenice/upx ./tools/
-sed -i '30 a\tools-y += ucl upx' ./tools/Makefile
+sed -i '28 a\tools-y += ucl upx' ./tools/Makefile
 
 ##修改LAN地址、时区
 sed -i 's/192.168.1.1/192.168.9.1/g' package/base-files/files/bin/config_generate
