@@ -16,7 +16,9 @@ sed -i "s/timezone='UTC'/timezone='CTS-8'/g" package/base-files/files/bin/config
 sed -i 's/root::0:0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/g' package/base-files/files/etc/shadow
 sed -i "/^DISTRIB_REVISION=/cDISTRIB_REVISION='V$YEAR.$MONTH.$DAY By Greenice'" package/base-files/files/etc/openwrt_release
 
-mv ./package/greenice/adguardhome ./feeds/packages/net/
+# rm -rf ./feeds/packages/net/adguardhome
+rm -rf ./feeds/packages/net/xray-core
+# mv ./package/greenice/adguardhome ./feeds/packages/net/
 mv ./package/greenice/xray-core ./feeds/packages/net/
 
 exit 0
