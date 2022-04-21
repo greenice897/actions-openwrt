@@ -17,8 +17,8 @@ sed -i 's/root::0:0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999
 sed -i "/^DISTRIB_REVISION=/cDISTRIB_REVISION='V$YEAR.$MONTH.$DAY By Greenice'" package/base-files/files/etc/openwrt_release
 
 # rm -rf feeds/packages/net/adguardhome
-rm -rf feeds/packages/net/xray-core
-# mv package/greenice/adguardhome feeds/packages/net/
-mv package/greenice/xray-core feeds/packages/net/
+#  rm -rf feeds/packages/net/xray-core
+rsync -rtv --delete package/greenice/adguardhome feeds/packages/net/adguardhome
+rsync -rtv --delete package/greenice/xray-core/ feeds/packages/net/xray-core
 
 exit 0
