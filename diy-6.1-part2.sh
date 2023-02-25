@@ -30,10 +30,14 @@ sed -i 's/KERNEL_PATCHVER:=5.15/KERNEL_PATCHVER:=6.1/g' target/linux/x86/Makefil
 # make menuconfig时记得勾选LuCI ---> Applications ---> luci-app-argon-config
 
 ########### 更新lean的内置的smartdns版本 ###########
-sed -i 's/1.2022.38.1/1.2022.40/g' feeds/packages/net/smartdns/Makefile
-sed -i 's/9bc857f628299573c7eca0833229d9812b1c1de4/98ce7fd38c6a72f24126d4eadbef8ef85ba60ee0/g' feeds/packages/net/smartdns/Makefile
-sed -i 's/^PKG_MIRROR_HASH/#&/' feeds/packages/net/smartdns/Makefile
+# sed -i 's/1.2022.38.1/1.2022.40/g' feeds/packages/net/smartdns/Makefile
+# sed -i 's/9bc857f628299573c7eca0833229d9812b1c1de4/b473b9c6e101f89ec302c7e080fa7f6bd59ca618/g' feeds/packages/net/smartdns/Makefile
+# sed -i 's/^PKG_MIRROR_HASH/#&/' feeds/packages/net/smartdns/Makefile
+rm -rf feeds/packages/net/smartdns
+git clone https://github.com/pymumu/openwrt-smartdns.git feeds/packages/net/smartdns
+sed -i "/^PKG_SOURCE_VERSION:=/cPKG_SOURCE_VERSION:=2ca4c92c9f4f6bbe5279e498fe238ea3f70f8902" feeds/packages/net/smartdns/Makefile
+sed -i "s/PKG_MIRROR_HASH/#PKG_MIRROR_HASH/" feeds/packages/net/smartdns/Makefile
 
-########### 安装smartdns（必选）###########
+########### 安装luci-app-smartdns（必选）###########
 git clone -b lede https://github.com/pymumu/luci-app-smartdns.git package/luci-app-smartdns
 # git clone https://github.com/pymumu/smartdns.git package/smartdns
