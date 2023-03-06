@@ -20,10 +20,10 @@
 #echo 'src-git small https://github.com/kenzok8/small' >>feeds.conf.default
 
 
-
+svn co https://github.com/greenice897/gipackages/trunk/r8125 package/kernel/r8125
 ####### 科学上网插件 #######
-echo 'src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall.git;packages' >>feeds.conf.default
-echo 'src-git passwall_luci https://github.com/xiaorouji/openwrt-passwall.git;luci' >>feeds.conf.default
+#echo 'src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall.git;packages' >>feeds.conf.default
+#echo 'src-git passwall_luci https://github.com/xiaorouji/openwrt-passwall.git;luci' >>feeds.conf.default
 #echo 'src-git openclash_luci https://github.com/vernesong/OpenClash.git' >>feeds.conf.default
 
 
