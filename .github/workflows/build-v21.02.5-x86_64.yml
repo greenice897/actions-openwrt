@@ -67,18 +67,19 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
         
-    - name: luci-theme-argon install
-      run: |
-       cd openwrt
-       cd package/greenice
-       rm -rf luci-theme-argon
-       git clone https://github.com/jerrykuku/luci-theme-argon.git
-       
-    - name: luci-app-argon-config install
-      run: |
-       cd openwrt
-       cd package/greenice
-       git clone https://github.com/jerrykuku/luci-app-argon-config.git
+#    - name: luci-theme-argon install
+#      run: |
+#       cd openwrt
+#       cd package/greenice
+#       rm -rf luci-theme-argon
+#       git clone https://github.com/jerrykuku/luci-theme-argon.git
+#       
+#    - name: luci-app-argon-config install
+#      run: |
+#       cd openwrt
+#       cd package/greenice
+#       git clone https://github.com/jerrykuku/luci-app-argon-config.git
+
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
 
