@@ -21,4 +21,4 @@
 
 git clone https://github.com/greenice897/openwrtpackages.git package/greenice
 git clone https://github.com/xiaorouji/openwrt-passwall-packages.git package/greenice/passwallpackages
-git clone https://github.com/sbwml/package_kernel_r8125.git package/greenice/r8125
+# git clone https://github.com/sbwml/package_kernel_r8125.git package/greenice/r8125
