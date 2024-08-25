@@ -18,14 +18,19 @@ sed -i 's/192.168.1.1/192.168.9.1/g' package/base-files/files/bin/config_generat
 
 # rm -rf package/greenice/passwallpackages/gn
 # rm -rf package/greenice/passwallpackages/naiveproxy
+
 rm -rf package/network/services/omcproxy
 rsync -rtv --delete package/greenice/omcproxy/ package/network/services/omcproxy
 rm package/greenice/omcproxy
+
 # svn export https://github.com/greenice897/gipackages/trunk/omcproxy package/network/services/omcproxy
-rm -rf package/greenice/passwallpackages/sing-box
+# rm -rf package/greenice/passwallpackages/sing-box
+
 rm -rf feeds/packages/net/sing-box
-rsync -rtv --delete package/greenice/sing-box/ feeds/packages/net/sing-box
-rsync -rtv --delete package/greenice/sing-box/  package/greenice/passwallpackages/sing-box
+rsync -rtv --delete package/greenice/passwallpackages/sing-box/ feeds/packages/net/sing-box
+
+# rsync -rtv --delete package/greenice/sing-box/  package/greenice/passwallpackages/sing-box
+# rsync -rtv --delete package/greenice/sing-box/ feeds/packages/net/sing-box
 # svn export https://github.com/greenice897/gipackages/trunk/sing-box feeds/packages/net/sing-box
 # svn export https://github.com/greenice897/gipackages/trunk/sing-box package/greenice/passwallpackages/sing-box
 
