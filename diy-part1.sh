@@ -21,4 +21,5 @@
 
 git clone https://github.com/greenice897/openwrtpackages.git package/greenice
 git clone https://github.com/xiaorouji/openwrt-passwall-packages.git package/greenice/passwallpackages
+git clone -b luci-smartdns-dev https://github.com/xiaorouji/openwrt-passwall.git package/greenice
 # git clone https://github.com/sbwml/package_kernel_r8125.git package/greenice/r8125
