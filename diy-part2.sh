@@ -28,6 +28,8 @@ rm package/greenice/omcproxy
 
 rm -rf feeds/packages/net/sing-box
 rsync -rtv --delete package/greenice/passwallpackages/sing-box/ feeds/packages/net/sing-box
+rm -rf package/kernel/r8125
+rsync -lrtv --delete package/greenice/passwallpackages/r8125/ package/kernel/r8125
 
 # rsync -rtv --delete package/greenice/sing-box/  package/greenice/passwallpackages/sing-box
 # rsync -rtv --delete package/greenice/sing-box/ feeds/packages/net/sing-box
