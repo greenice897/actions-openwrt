@@ -28,8 +28,8 @@ rm package/greenice/omcproxy
 
 rm -rf feeds/packages/net/sing-box
 rsync -rtv --delete package/greenice/passwallpackages/sing-box/ feeds/packages/net/sing-box
-rm -rf package/kernel/r8125
-rsync -lrtv --delete package/greenice/r8125/ package/kernel/r8125
+# rm -rf package/kernel/r8125
+# rsync -lrtv --delete package/greenice/r8125/ package/kernel/r8125
 
 # rsync -rtv --delete package/greenice/sing-box/  package/greenice/passwallpackages/sing-box
 # rsync -rtv --delete package/greenice/sing-box/ feeds/packages/net/sing-box
@@ -40,7 +40,7 @@ rsync -lrtv --delete package/greenice/r8125/ package/kernel/r8125
 rm -rf feeds/packages/net/smartdns
 git clone https://github.com/pymumu/openwrt-smartdns.git feeds/packages/net/smartdns
 sed -i "s/PKG_VERSION:=1.2024.45/PKG_VERSION:=1.2024.46/" feeds/packages/net/smartdns/Makefile
-sed -i "/^PKG_SOURCE_VERSION:=/cPKG_SOURCE_VERSION:=1d9c11a9c36b02173db4edb7e0e618cbaf0693f4" feeds/packages/net/smartdns/Makefile
+sed -i "/^PKG_SOURCE_VERSION:=/cPKG_SOURCE_VERSION:=84f217dbd19f97e30f24af640ddb4cd21ae1e3ec" feeds/packages/net/smartdns/Makefile
 sed -i "s/PKG_MIRROR_HASH/# PKG_MIRROR_HASH/" feeds/packages/net/smartdns/Makefile
 rm -rf feeds/luci/applications/luci-app-smartdns
 git clone https://github.com/pymumu/luci-app-smartdns.git feeds/luci/applications/luci-app-smartdns
