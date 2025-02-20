@@ -23,6 +23,9 @@ rm -rf package/network/services/omcproxy
 rsync -rtv --delete package/greenice/omcproxy/ package/network/services/omcproxy
 rm package/greenice/omcproxy
 
+rm -rf package/kernel/r8125
+rsync -rtv --delete package/greenice/passwallpackages/r8125/ package/kernel/r8125
+
 # svn export https://github.com/greenice897/gipackages/trunk/omcproxy package/network/services/omcproxy
 # rm -rf package/greenice/passwallpackages/sing-box
 
