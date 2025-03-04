@@ -32,8 +32,8 @@ rsync -lrtv --delete package/greenice/r8125/ package/kernel/r8125
 
 rm -rf feeds/packages/net/sing-box
 rsync -rtv --delete package/greenice/passwallpackages/sing-box/ feeds/packages/net/sing-box
-# rm -rf package/kernel/r8125
-# rsync -lrtv --delete package/greenice/r8125/ package/kernel/r8125
+rm -rf package/kernel/r8125
+rsync -lrtv --delete package/greenice/r8125/ package/kernel/r8125
 
 # rsync -rtv --delete package/greenice/sing-box/  package/greenice/passwallpackages/sing-box
 # rsync -rtv --delete package/greenice/sing-box/ feeds/packages/net/sing-box
@@ -53,8 +53,8 @@ git clone https://github.com/pymumu/luci-app-smartdns.git feeds/luci/application
 #rsync -rtv --delete package/greenice/adguardhome/ feeds/packages/net/adguardhome
 
 ########### 更新xray-core版本###########
-sed -i "s/PKG_VERSION:=25.3.3/PKG_VERSION:=25.2.21/" /package/greenice/passwallpackages/xray-core/Makefile
-sed -i "s/PKG_HASH:=790066598dbef29fac5cd444dbb476c03975d28509bc6900ad855167bc8696b2/PKG_HASH:=a565db518d2da12fabb74e123d9bf2bdbc34420b81373938f8fcbc7004fda3ba/" /package/greenice/passwallpackages/xray-core/Makefile
+sed -i "s/PKG_VERSION:=25.3.3/PKG_VERSION:=25.2.21/" package/greenice/passwallpackages/xray-core/Makefile
+sed -i "s/PKG_HASH:=790066598dbef29fac5cd444dbb476c03975d28509bc6900ad855167bc8696b2/PKG_HASH:=a565db518d2da12fabb74e123d9bf2bdbc34420b81373938f8fcbc7004fda3ba/" package/greenice/passwallpackages/xray-core/Makefile
 
 rsync -rtv --delete package/greenice/passwallpackages/xray-core/ feeds/packages/net/xray-core
 rsync -rtv --delete package/greenice/passwallpackages/microsocks/ feeds/packages/net/microsocks
