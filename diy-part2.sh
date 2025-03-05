@@ -42,10 +42,11 @@ rsync -lrtv --delete package/greenice/r8125/ package/kernel/r8125
 
 ########### 更新smartdns版本 ###########
 rm -rf feeds/packages/net/smartdns
-git clone -b Release46.1 https://github.com/pymumu/smartdns.git feeds/packages/net/smartdns
-# sed -i "s/PKG_VERSION:=1.2024.45/PKG_VERSION:=1.2024.46/" feeds/packages/net/smartdns/Makefile
-# sed -i "/^PKG_SOURCE_VERSION:=/cPKG_SOURCE_VERSION:=b969ee66dffbb0d8c400e04244f151ca9f01b064" feeds/packages/net/smartdns/Makefile
-# sed -i "s/PKG_MIRROR_HASH/# PKG_MIRROR_HASH/" feeds/packages/net/smartdns/Makefile
+# git clone -b Release46.1 https://github.com/pymumu/smartdns.git feeds/packages/net/smartdns
+git clone https://github.com/pymumu/openwrt-smartdns.git feeds/packages/net/smartdns
+sed -i "s/PKG_VERSION:=1.2024.45/PKG_VERSION:=1.2024.46.1/" feeds/packages/net/smartdns/Makefile
+sed -i "/^PKG_SOURCE_VERSION:=/cPKG_SOURCE_VERSION:=b525170bfd627607ee5ac81f97ae0f1f4f087d6b" feeds/packages/net/smartdns/Makefile
+sed -i "s/PKG_MIRROR_HASH/# PKG_MIRROR_HASH/" feeds/packages/net/smartdns/Makefile
 rm -rf feeds/luci/applications/luci-app-smartdns
 git clone https://github.com/pymumu/luci-app-smartdns.git feeds/luci/applications/luci-app-smartdns
 # sed -i "s/PKG_VERSION:=1.2024.45/PKG_VERSION:=1.2024.46/" feeds/luci/applications/luci-app-smartdns/Makefile
