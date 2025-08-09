@@ -21,7 +21,7 @@ sed -i 's/192.168.1.1/192.168.9.1/g' package/base-files/files/bin/config_generat
 
 rm -rf package/network/services/omcproxy
 rsync -rtv --delete package/greenice/omcproxy/ package/network/services/omcproxy
-rm package/greenice/omcproxy
+rm -rf package/greenice/omcproxy
 
 # rm -rf package/kernel/r8125
 # rsync -rtv --delete package/greenice/passwallpackages/r8125/ package/kernel/r8125
@@ -60,5 +60,5 @@ git clone https://github.com/pymumu/luci-app-smartdns.git feeds/luci/application
 rsync -rtv --delete package/greenice/passwallpackages/xray-core/ feeds/packages/net/xray-core
 rsync -rtv --delete package/greenice/passwallpackages/microsocks/ feeds/packages/net/microsocks
 # rsync -rtv --delete package/greenice/passwallpackages/sing-box/ feeds/packages/net/sing-box
-rsync -rtv --delete package/greenice/passwallpackages/v2ray-core/ feeds/packages/net/v2ray-core
+# rsync -rtv --delete package/greenice/passwallpackages/v2ray-core/ feeds/packages/net/v2ray-core
 rsync -rtv --delete package/greenice/passwallpackages/v2ray-geodata/ feeds/packages/net/v2ray-geodata
