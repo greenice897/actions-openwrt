@@ -19,9 +19,9 @@ sed -i 's/192.168.1.1/192.168.9.1/g' package/base-files/files/bin/config_generat
 # rm -rf package/greenice/passwallpackages/gn
 # rm -rf package/greenice/passwallpackages/naiveproxy
 
-rm -rf package/network/services/omcproxy
-rsync -rtv --delete package/greenice/omcproxy/ package/network/services/omcproxy
-rm -rf package/greenice/omcproxy
+# rm -rf package/network/services/omcproxy
+# rsync -rtv --delete package/greenice/omcproxy/ package/network/services/omcproxy
+# rm -rf package/greenice/omcproxy
 
 # rm -rf package/kernel/r8125
 # rsync -rtv --delete package/greenice/passwallpackages/r8125/ package/kernel/r8125
@@ -46,7 +46,7 @@ rm -rf feeds/packages/net/smartdns
 git clone https://github.com/pymumu/openwrt-smartdns.git feeds/packages/net/smartdns
 # sed -i "s/PKG_VERSION:=1.2024.45/PKG_VERSION:=1.2024.46.1/" feeds/packages/net/smartdns/Makefile
 # sed -i "/^PKG_SOURCE_VERSION:=/cPKG_SOURCE_VERSION:=b525170bfd627607ee5ac81f97ae0f1f4f087d6b" feeds/packages/net/smartdns/Makefile
-sed -i "s/PKG_MIRROR_HASH/# PKG_MIRROR_HASH/" feeds/packages/net/smartdns/Makefile
+# sed -i "s/PKG_MIRROR_HASH/# PKG_MIRROR_HASH/" feeds/packages/net/smartdns/Makefile
 rm -rf feeds/luci/applications/luci-app-smartdns
 git clone https://github.com/pymumu/luci-app-smartdns.git feeds/luci/applications/luci-app-smartdns
 # sed -i "s/PKG_VERSION:=1.2024.45/PKG_VERSION:=1.2024.46/" feeds/luci/applications/luci-app-smartdns/Makefile
