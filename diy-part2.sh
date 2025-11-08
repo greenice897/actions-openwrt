@@ -62,3 +62,5 @@ rsync -rtv --delete package/greenice/passwallpackages/microsocks/ feeds/packages
 # rsync -rtv --delete package/greenice/passwallpackages/sing-box/ feeds/packages/net/sing-box
 # rsync -rtv --delete package/greenice/passwallpackages/v2ray-core/ feeds/packages/net/v2ray-core
 rsync -rtv --delete package/greenice/passwallpackages/v2ray-geodata/ feeds/packages/net/v2ray-geodata
+
+sed -i 's/llvm.download-ci-llvm=true/llvm.download-ci-llvm=false/' feeds/packages/lang/rust/Makefile
