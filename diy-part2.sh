@@ -45,8 +45,9 @@ rm -rf feeds/packages/net/smartdns
 # git clone -b Release46.1 https://github.com/pymumu/smartdns.git feeds/packages/net/smartdns
 git clone https://github.com/pymumu/openwrt-smartdns.git feeds/packages/net/smartdns
 # sed -i "s/PKG_VERSION:=1.2024.45/PKG_VERSION:=1.2024.46.1/" feeds/packages/net/smartdns/Makefile
-# sed -i "/^PKG_SOURCE_VERSION:=/cPKG_SOURCE_VERSION:=b525170bfd627607ee5ac81f97ae0f1f4f087d6b" feeds/packages/net/smartdns/Makefile
-# sed -i "s/PKG_MIRROR_HASH/# PKG_MIRROR_HASH/" feeds/packages/net/smartdns/Makefile
+sed -i "/^PKG_SOURCE_VERSION:=/cPKG_SOURCE_VERSION:=3e48a94b9875b74509c5265d740915e7c8e60315" feeds/packages/net/smartdns/Makefile
+sed -i "/^SMARTDNS_WEBUI_SOURCE_VERSION:=/cSMARTDNS_WEBUI_SOURCE_VERSION:=a673732fd541bbd33e3677e6315cf8a9ce3bf248" feeds/packages/net/smartdns/Makefile
+sed -i "s/PKG_MIRROR_HASH/# PKG_MIRROR_HASH/" feeds/packages/net/smartdns/Makefile
 rm -rf feeds/luci/applications/luci-app-smartdns
 git clone https://github.com/pymumu/luci-app-smartdns.git feeds/luci/applications/luci-app-smartdns
 # sed -i "s/PKG_VERSION:=1.2024.45/PKG_VERSION:=1.2024.46/" feeds/luci/applications/luci-app-smartdns/Makefile
